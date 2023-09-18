@@ -2,11 +2,17 @@ import boto3
 import psycopg2
 import pandas
 from sqlalchemy import create_engine
+from configparser import ConfigParser
+
 
 region = 'eu-west-1'
 bucket_name = 'payminute'
 
+config = ConfigParser()
+config.read('.env')
 
+access_key = config['AWS']['access_key']
+secret_key =  config['AWS']['secret_key']
 
 
 def create_bucket():
